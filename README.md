@@ -1,27 +1,25 @@
-# Manage
+angular 4 版管理系统前端
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
+## 安装
 
-## Development server
+### 安装@angular/cli:
+```bash
+npm install -g @angular/cli@latest
+npm config set sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### 安装依赖包:
+```bash
+npm install
+```
 
-## Code scaffolding
+### 在浏览器中运行( `http://localhost:4200/`):
+```bash
+ng serve
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### 参考网址
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+[Angular CLI](https://github.com/angular/angular-cli)
+[Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md)
