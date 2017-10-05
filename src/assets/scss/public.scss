@@ -1,0 +1,130 @@
+@import "config";
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+  &:focus{
+    outline: none !important;
+  }
+}
+html,body{
+  height: 100%;
+}
+body{
+  font-family:$global-font-family;
+  background-color: $bg-color;
+}
+a{
+  &:link,&:visited{
+    text-decoration: none;
+  }
+  &:hover,&:active{
+    text-decoration: none;
+  }
+}
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+input,textarea{
+  -webkit-appearance: none;
+}
+img{
+  vertical-align: top;
+}
+.img-full{
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+.none{
+  display: none !important;
+}
+.invisible{
+  visibility: hidden !important;
+}
+.pointer{
+  cursor: pointer;
+}
+.one-line{
+  @include singleLine;
+}
+.clearfix{
+  &:before,&:after{
+    display: table;
+    content: " ";
+  }
+  &:after{
+    clear: both;
+  }
+}
+.relative{
+  position: relative !important;
+}
+.fixed{
+  position: fixed !important;
+}
+.single-line{
+  @include singleLine;
+}
+.pull-left{
+  float: left !important;
+}
+.pull-right{
+  float: right !important;
+}
+.align-left{
+  text-align: left !important;
+}
+.align-center{
+  text-align: center !important;
+}
+.align-right{
+  text-align: right !important;
+}
+/*********************水平和垂直居中对齐*********************/
+.middle-outer{
+  display:table;
+  text-align:center;
+  width: 100%;
+  height: 100%;
+  .middle-inner{
+    width: 100%;
+    height: 100%;
+    display:table-cell;
+    vertical-align:middle;
+  }
+}
+.center{
+  @include center;
+}
+/*********************优化滚动条*********************/
+.thin-scroll{
+  &::-webkit-scrollbar{
+    width: 0px;
+  }
+  &::-webkit-scrollbar-track{
+    background: #ffffff;
+  }
+  &::-webkit-scrollbar-thumb{
+    background: #8c96a0;
+  }
+}
+.not-pc{
+  .thin-scroll {
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
+  }
+}
+/*********************阻止交互*********************/
+.refuse-mask{
+  @include full;
+  z-index: 1000;
+  background-color: rgba(0,0,0,0);
+}

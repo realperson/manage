@@ -1,0 +1,8 @@
+<div class="mask-container" [ngClass]="{'show-mask':isShowMask(),none:!isShow}" [ngStyle]="getMaskColorStyle()">
+    <div class='mask-content clearfix' [ngStyle]="getBgColorStyle()" [ngClass]="{'theme-normal':isThemeNormal(),'theme-inverse':!isThemeNormal(),'layout-normal':isLayoutNormal(),'layout-row':!isLayoutNormal()}">
+      <div class='mask-animation'>
+        <component-spinner [color]="getColor()" [name]="getSpinnerName()"></component-spinner>
+      </div>
+      <div class='mask-tip' [ngClass]="{none:text==''||text==null}" [ngStyle]="getTextColorStyle()" [innerHTML]="text"></div>
+    </div>
+</div>

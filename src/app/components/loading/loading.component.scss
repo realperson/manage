@@ -1,0 +1,60 @@
+@import "./../../../assets/scss/config";
+
+.mask-container{
+  position: fixed;
+  z-index: 9999999;
+  @include full;
+  &.show-mask{
+    background-color: rgba(0,0,0,$global-mask-opacity);
+  }
+  .mask-content {
+    display: inline-block;
+    padding: 10px 10px;
+    min-width: 48px;
+    min-height: 48px;
+    @include border-radius(5px);
+    @include center;
+    .mask-animation {
+      width: 28px;
+      height: 28px;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;//去除4px空格
+    }
+    .mask-tip {
+      font-size: 12px;
+    }
+    //默认主题
+    &.theme-normal{
+      background-color: rgba(0,0,0,0.6);
+      .mask-tip {
+        color: #ffffff;
+      }
+    }
+    //反转主题
+    &.theme-inverse{
+      background-color: rgba(255,255,255,1);
+      .mask-tip {
+        color: #333333;
+      }
+    }
+    //单行显示
+    &.layout-normal{
+      .mask-animation {
+        float: left;
+      }
+      .mask-tip {
+        margin-left: 38px;
+        margin-top: 0px;
+        line-height: 28px;
+      }
+    }
+    //两行显示
+    &.layout-row{
+
+    }
+    .mask-tip {
+      margin-top: 5px;
+    }
+  }
+}

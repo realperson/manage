@@ -1,0 +1,8 @@
+<div class="component-spinner">
+  <svg viewBox="0 0 64 64" *ngFor="let item of transforms" [ngStyle]="getSvgStyle(item)">
+    <line transform="translate(32,32)"  y1="12" y2="20" *ngIf="name==='small';else elseBlock" [ngStyle]="getLineStyle()"></line>
+    <ng-template #elseBlock>
+      <line transform="translate(32,32)"  y1="17" y2="29" [ngStyle]="getLineStyle()"></line>
+    </ng-template>
+  </svg>
+</div>
