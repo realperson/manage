@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {UtilService} from "../../services/util/util.service";
 
 @Component({
   selector: 'component-loading',
@@ -6,6 +7,11 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./loading.component.scss']
 })
 export class LoadingComponent implements OnInit {
+
+  /**
+   * 是否显示
+   */
+  @Input() isShow: boolean | string;
 
   /**
    * 加载动画名称(normal:大 small:小) 默认为大
@@ -71,14 +77,10 @@ export class LoadingComponent implements OnInit {
    */
   inverseBgColor = '#ffffff';
 
-  /**
-   * 是否显示
-   * @type {boolean}
-   */
-  isShow = true;
 
-
-  constructor() {
+  constructor(private util: UtilService) {
+    console.log(util.loading);
+    setTimeout(() => console.log(util.loading), 1000);
   }
 
   ngOnInit() {
@@ -319,6 +321,7 @@ export class LoadingComponent implements OnInit {
     } else {
       this.maskColor = '';
     }
+    this.isShow = true;
   }
 
 
