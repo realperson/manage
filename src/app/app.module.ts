@@ -3,17 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoadingComponent } from './components/loading/loading.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
+import {CoreModule} from './modules/core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoadingComponent,
-    SpinnerComponent
   ],
   imports: [
     BrowserModule,
+    CoreModule,
     AppRoutingModule
   ],
   providers: [],
