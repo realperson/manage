@@ -8,9 +8,9 @@ import {EventData} from '../../interfaces/event-data';
 export class UtilService {
 
   subject: Subject<EventData> = new Subject();
-  // position=[
-  //
-  // ];
+  position=[
+    'left','center','right','top','middle','bottom'
+  ];
 
   /**
    * 隐藏加载动画

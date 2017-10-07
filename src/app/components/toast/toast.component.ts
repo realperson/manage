@@ -35,12 +35,12 @@ export class ToastComponent implements OnInit, OnDestroy {
   /**
    * 位置
    */
-  // @Input() position: number = PositionType.CENTER | PositionType.MIDDLE;
+  @Input() position: number = PositionType.CENTER | PositionType.MIDDLE;
 
   /**
    * 内容摆放
    */
-  // @Input() layout: number = PositionType.CENTER | PositionType.MIDDLE;
+  @Input() layout: number = PositionType.CENTER | PositionType.MIDDLE;
 
   /**
    * 文字
@@ -119,13 +119,13 @@ export class ToastComponent implements OnInit, OnDestroy {
    * 订阅显示和隐藏事件
    */
   subscribe() {
-    // this.subscription = this.util.subject.subscribe((d: EventData) => {
-    //   if (d.type === EventType.TYPE_TOAST) {
-    //     this.toast(d.data);
-    //   } else if (d.type === EventType.TYPE_TOAST_HIDE) {
-    //     this.hide();
-    //   }
-    // });
+    this.subscription = this.util.subject.subscribe((d: EventData) => {
+      if (d.type === EventType.TYPE_TOAST) {
+        this.toast(d.data);
+      } else if (d.type === EventType.TYPE_TOAST_HIDE) {
+        this.hide();
+      }
+    });
   }
 
   /**
@@ -170,15 +170,53 @@ export class ToastComponent implements OnInit, OnDestroy {
    */
   getPositionClass() {
     let result = {};
-    // for (let i in PositionType) {
-    //   console.log(i);
-    // }
+    let item: string;
+    this.util.position.forEach((name) => {
+      item = name.toUpperCase();
+      // 判断位置类型
+      if ((PositionType[item] & this.position) === (PositionType[item])) {
+        let key = 'content-' + name;
+        result[key] = true;
+      }
+    });
+    return result;
+  }
 
-    // if (this.theme) {
-    //   if (this.themes.indexOf(this.theme) !== -1) {
-    //     result = this.theme;
-    //   }
-    // }
+  /**
+   * 获取内容对应的css类
+   * @returns {string}
+   */
+  getContentClass() {
+    const result = {};
+    let item: string;
+    let key: string;
+    // 设置内容对齐方式
+    this.util.position.forEach((name) => {
+      item = name.toUpperCase();
+      // 判断位置类型
+      if ((PositionType[item] & this.layout) === (PositionType[item])) {
+        key = 'content-' + name;
+        result[key] = true;
+      }
+    });
+    // 设置主题
+    key = 'theme-' + this.getTheme();
+    result[key] = true;
+    return result;
+  }
+
+  /**
+   * 获取内容对应的样式
+   * @returns {{}}
+   */
+  getContentStyle() {
+    const result = {};
+    if (this.bgColor) {
+      result['background-color'] = this.bgColor;
+    }
+    if (this.color) {
+      result['color'] = this.color;
+    }
     return result;
   }
 
