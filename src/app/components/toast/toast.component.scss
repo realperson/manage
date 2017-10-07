@@ -1,0 +1,68 @@
+@import "./../../../assets/scss/config";
+
+$space:10px;
+$text-padding:20px;
+$font-size:16px;
+$line-height:25px;
+$bg-normal:#333333;
+$bg-inverse:#ffffff;
+
+
+.toast-container{
+  @include full;
+  position: fixed;
+  z-index: 999999;
+  pointer-events:none;
+  .toast-box{
+    @include full;
+    pointer-events:none;
+  }
+  .toast-content{
+    pointer-events:auto;
+    background-color: rgba(0,0,0,0.9);
+    background-color: #333;
+    @include border-radius(5px);
+    min-width: 250px;
+    min-height: 60px;
+    max-width: 450px;
+    max-height: 260px;
+    line-height:$line-height;
+    @include box-shadow(#000000,0.2,5px);
+    overflow: auto;
+    .toast-text{
+      display: inline-block;
+      font-size: $font-size;
+      padding: $text-padding;
+      p{
+        text-indent: 2em;
+      }
+    }
+    //默认主题
+    &.theme-normal{
+      background-color: #333333;
+      color: #ffffff;
+      @include box-shadow(#000000,0.5,5px);
+    }
+    //反转主题
+    &.theme-inverse{
+      background-color: #ffffff;
+      color: #333333;
+    }
+    //错误主题
+    &.theme-error{
+      background: #f9dada;
+      color: #a94442;
+    }
+    //提示主题
+    &.theme-tip{
+      background: #ffffff;
+      color: #666666;
+    }
+    //成功主题
+    &.theme-success{
+      background: #dff0d8;
+      color: #3c7668;
+      @include box-shadow(#3c7668,0.2,5px);
+    }
+  }
+}

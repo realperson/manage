@@ -1,0 +1,22 @@
+//内容布局
+.flex{
+  display: flex !important;
+}
+.content-left{
+  justify-content: flex-start !important;
+}
+.content-center{
+  justify-content: center !important;
+}
+.content-right{
+  justify-content: flex-end !important;
+}
+.content-top{
+  align-items: flex-start !important;
+}
+.content-middle{
+  align-items: center !important;
+}
+.content-bottom{
+  align-items: flex-end !important;
+}

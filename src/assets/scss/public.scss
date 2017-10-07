@@ -1,4 +1,5 @@
 @import "config";
+@import "content-align";
 
 *{
   margin: 0;
@@ -106,7 +107,7 @@ img{
 /*********************优化滚动条*********************/
 .thin-scroll{
   &::-webkit-scrollbar{
-    width: 0px;
+    width: 8px;
   }
   &::-webkit-scrollbar-track{
     background: #ffffff;

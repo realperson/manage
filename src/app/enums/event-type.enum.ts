@@ -7,5 +7,15 @@ export enum EventType {
     /**
      * 显示加载动画
      */
-    TYPE_LOADING
+    TYPE_LOADING,
+
+      /**
+       * 隐藏提示
+       */
+    TYPE_TOAST_HIDE,
+
+      /**
+       * 显示提示
+       */
+    TYPE_TOAST
 }

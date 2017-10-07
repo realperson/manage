@@ -25,13 +25,13 @@ $modal-footer-height:40px;//对话框底部的高度
   opacity:$opacity;
 }
 //阴影
-@mixin box-shadow($color:#000000,$opacity:0.1,$size:5px){
+@mixin box-shadow($color:#000000,$opacity:0.1,$size:5px,$x:0px,$y:0px){
   $red:red($color);
   $green:green($color);
   $blue:blue($color);
-  -webkit-box-shadow: 0 0 $size rgba($red,$green,$blue,$opacity);
-  -moz-box-shadow: 0 0 $size rgba($red,$green,$blue,$opacity);
-  box-shadow: 0 0 $size rgba($red,$green,$blue,$opacity);
+  -webkit-box-shadow: $x $y $size rgba($red,$green,$blue,$opacity);
+  -moz-box-shadow: $x $y $size rgba($red,$green,$blue,$opacity);
+  box-shadow: $x $y $size rgba($red,$green,$blue,$opacity);
 }
 @mixin boxshadow($value){
   -webkit-box-shadow: $value;

@@ -1,0 +1,22 @@
+//位置
+$space:10px;
+&.position-left{
+  left:$space;
+}
+&.position-center{
+  left:50%;
+  @include transform(translateX(-50%));
+}
+&.position-right{
+  right:$space;
+}
+&.position-top{
+  top:$space;
+}
+&.position-middle{
+  top:50%;
+  @include transform(translateY(-50%));
+}
+&.position-bottom{
+  bottom:$space;
+}

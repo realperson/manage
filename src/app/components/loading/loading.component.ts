@@ -316,7 +316,7 @@ export class LoadingComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * 隐藏组件
+   * 隐藏
    */
   hide() {
     this.isShow = false;
