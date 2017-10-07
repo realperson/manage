@@ -1,12 +1,17 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {UtilService} from "../../services/util/util.service";
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {UtilService} from '../../services/util/util.service';
+import {Subscription} from 'rxjs/Subscription';
+import {EventData} from '../../interfaces/event-data';
+import {EventType} from '../../enums/event-type.enum';
+import {loadingAnimation} from '../../animations/animation-loading';
 
 @Component({
   selector: 'component-loading',
   templateUrl: './loading.component.html',
-  styleUrls: ['./loading.component.scss']
+  styleUrls: ['./loading.component.scss'],
+  animations: [loadingAnimation]
 })
-export class LoadingComponent implements OnInit {
+export class LoadingComponent implements OnInit, OnDestroy {
 
   /**
    * 是否显示
@@ -77,10 +82,65 @@ export class LoadingComponent implements OnInit {
    */
   inverseBgColor = '#ffffff';
 
+  /**
+   * 用于订阅和反订阅事件
+   */
+  subscription: Subscription;
+
+  /**
+   * 动画是否已完成
+   * @type {boolean}
+   */
+  isAnimationEnd = true;
 
   constructor(private util: UtilService) {
-    console.log(util.loading);
-    setTimeout(() => console.log(util.loading), 1000);
+    this.subscribe();
+  }
+
+  /**
+   * 动画开始
+   * @param e
+   */
+  animationStarted(e: any) {
+    this.isAnimationEnd = false;
+  }
+
+  /**
+   * 动画开始
+   * @param e
+   */
+  animationDone(e: any) {
+    this.isAnimationEnd = true;
+  }
+
+  /**
+   * 获取动画状态
+   * @returns {string}
+   */
+  get animationState() {
+    return this.isShow ? 'show' : 'hide';
+  }
+
+  /**
+   * 订阅显示和隐藏事件
+   */
+  subscribe() {
+    console.log(this.util.subject);
+    this.subscription = this.util.subject.subscribe((d: EventData) => {
+      console.log(d);
+      if (d.type === EventType.TYPE_LOADING) {
+        this.loading(d.data);
+      } else if (d.type === EventType.TYPE_LOADING_HIDE) {
+        this.hide();
+      }
+    });
+  }
+
+  /**
+   * 取消订阅显示和隐藏事件
+   */
+  unsubscribe() {
+    this.subscription.unsubscribe();
   }
 
   ngOnInit() {
@@ -97,6 +157,10 @@ export class LoadingComponent implements OnInit {
     //   mask: true, // 是否显示背景遮罩(true:显示 false:不显示 '其它不为false的值':显示)
     //   maskColor: '#666' // 背景遮罩颜色(当mask显示背景遮罩时生效,为空则使用默认颜色,如果需要透明度请使用rbga颜色)
     //  });
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe();
   }
 
 

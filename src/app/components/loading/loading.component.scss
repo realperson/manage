@@ -2,7 +2,7 @@
 
 .mask-container{
   position: fixed;
-  z-index: 9999999;
+  z-index: 99999;
   @include full;
   &.show-mask{
     background-color: rgba(0,0,0,$global-mask-opacity);
