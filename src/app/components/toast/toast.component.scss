@@ -16,6 +16,7 @@ $bg-inverse:#ffffff;
   .toast-box{
     @include full;
     pointer-events:none;
+    padding: $space;
   }
   .toast-content{
     pointer-events:auto;

@@ -195,6 +195,7 @@ export class ToastComponent implements OnInit, OnDestroy {
       item = name.toUpperCase();
       // 判断位置类型
       if ((PositionType[item] & this.layout) === (PositionType[item])) {
+        console.log(name)
         key = 'content-' + name;
         result[key] = true;
       }
