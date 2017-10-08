@@ -137,7 +137,6 @@ export class LoadingComponent implements OnInit, OnDestroy {
    * 订阅显示和隐藏事件
    */
   subscribe() {
-    console.log(this.util.subject);
     this.subscription = this.util.subject.subscribe((d: EventData) => {
       if (d.type === EventType.TYPE_LOADING) {
         this.show(d.data);

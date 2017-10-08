@@ -19,6 +19,7 @@ html,body{
 body{
   font-family:$global-font-family;
   background-color: $bg-color;
+  position: relative;
 }
 a{
   &:link,&:visited{
