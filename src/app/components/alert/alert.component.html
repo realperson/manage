@@ -14,7 +14,10 @@ alert-text:inline-block,用于显示文字
       <div class="body flex" [ngClass]="getContentClass()">
         <div class="alert-text" [innerHTML]="getText()"></div>
       </div>
-      <div class="foot"></div>
+      <div class="foot">
+        <button class="btn btn-success">{{okText}}</button>
+        <button class="btn btn-danger" [ngClass]="{none:!showCancelButton}">{{cancelText}}</button>
+      </div>
     </div>
   </div>
 </div>

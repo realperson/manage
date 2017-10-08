@@ -19,6 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "component",
       "styles": [
+        "assets/lib/bootstrap/stylesheets/_bootstrap.scss",
         "assets/scss/public.scss"
       ],
       "scripts": [],
