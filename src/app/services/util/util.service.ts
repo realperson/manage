@@ -69,6 +69,27 @@ export class UtilService {
     });
   }
 
+  /**
+   * 隐藏弹出框
+   */
+  hideAlert() {
+    this.subject.next({
+      type: EventType.TYPE_ALERT_HIDE,
+      data: null
+    });
+  }
+
+  /**
+   * 显示弹出框
+   * @param data
+   */
+  alert(data: any | string) {
+    this.subject.next({
+      type: EventType.TYPE_ALERT,
+      data: data
+    });
+  }
+
 
   constructor() {
   }

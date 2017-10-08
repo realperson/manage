@@ -8,29 +8,47 @@ $bg-normal:#333333;
 $bg-inverse:#ffffff;
 
 
-.toast-container{
+.alert-container{
   @include full;
   position: fixed;
   z-index: 999999;
-  pointer-events:none;
-  .toast-box{
+  .alert-bg{
+    @include full;
+    background-color: rgba(0,0,0,$global-mask-opacity);
+  }
+  .alert-box{
     @include full;
     pointer-events:none;
     padding: $space;
   }
-  .toast-content{
+  .alert-content{
     pointer-events:auto;
     background-color: rgba(0,0,0,0.9);
     background-color: #333;
     @include border-radius(5px);
-    @include box-shadow(#000000,0.2,5px);
-    min-width: 250px;
-    min-height: 60px;
-    max-width: 450px;
-    max-height: 260px;
-    line-height:$line-height;
-    overflow: auto;
-    .toast-text{
+    @include box-shadow(#000000,0.6,5px);
+    min-width: 400px;
+    min-height: 200px;
+    max-width: 500px;
+    max-height: 300px;
+    flex-direction:column;
+    .title,.body,.foot{
+      width: 100%;
+    }
+    .title{
+      height: 40px;
+      background-color: #eee;
+    }
+    .body{
+      overflow: auto;
+      flex:1;
+      line-height:$line-height;
+    }
+    .foot{
+      height: 50px;
+      background-color: #eee;
+    }
+    .alert-text{
       display: inline-block;
       font-size: $font-size;
       padding: $text-padding;

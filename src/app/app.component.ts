@@ -43,15 +43,24 @@ export class AppComponent implements OnInit {
     //   this.util.hideToast();
     // }, 7000);
 
+    // setTimeout(() => {
+    //   this.util.toast({
+    //     text: `${this.util.countDownPlaceholder}将跳转到百度`,
+    //     time: 5,
+    //     isCountDown: true,
+    //     callback: this.test.bind(this),
+    //     position: PositionType.TOP | PositionType.CENTER
+    //   });
+    // }, 1000);
+
     setTimeout(() => {
-      this.util.toast({
-        text: `${this.util.countDownPlaceholder}将跳转到百度`,
-        time: 5,
-        isCountDown: true,
-        callback: this.test.bind(this),
-        position: PositionType.TOP | PositionType.CENTER
+      this.util.alert({
+        text: `确定要删除吗?`,
+        ok: this.test.bind(this),
+        position: PositionType.MIDDLE | PositionType.CENTER
       });
-    }, 1000);
+    }, 0);
+
     // var button = document.querySelector('button');
     // Observable.fromEvent(button, 'click').subscribe((e) => console.log(e));
 

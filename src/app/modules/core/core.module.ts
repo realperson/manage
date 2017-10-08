@@ -4,6 +4,7 @@ import {UtilService} from '../../services/util/util.service';
 import {LoadingComponent} from '../../components/loading/loading.component';
 import {SpinnerComponent} from '../../components/spinner/spinner.component';
 import {ToastComponent} from '../../components/toast/toast.component';
+import {AlertComponent} from '../../components/alert/alert.component';
 
 
 @NgModule({
@@ -13,12 +14,14 @@ import {ToastComponent} from '../../components/toast/toast.component';
   declarations: [
     SpinnerComponent,
     LoadingComponent,
-    ToastComponent
+    ToastComponent,
+    AlertComponent
   ],
   exports: [
     SpinnerComponent,
     LoadingComponent,
-    ToastComponent
+    ToastComponent,
+    AlertComponent
   ],
   providers: [UtilService]
 })

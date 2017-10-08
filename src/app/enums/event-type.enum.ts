@@ -17,5 +17,15 @@ export enum EventType {
       /**
        * 显示提示
        */
-    TYPE_TOAST
+    TYPE_TOAST,
+
+      /**
+       * 隐藏弹出框
+       */
+    TYPE_ALERT_HIDE,
+
+      /**
+       * 显示弹出框
+       */
+    TYPE_ALERT
 }
