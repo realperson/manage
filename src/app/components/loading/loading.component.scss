@@ -1,9 +1,9 @@
 @import "./../../../assets/scss/config";
 
 .mask-container{
+  @include full;
   position: fixed;
   z-index: 99999;
-  @include full;
   &.show-mask{
     background-color: rgba(0,0,0,$global-mask-opacity);
   }

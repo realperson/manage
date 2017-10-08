@@ -13,6 +13,36 @@ import {loadingAnimation} from '../../animations/animation-loading';
 })
 export class LoadingComponent implements OnInit, OnDestroy {
 
+  // ------------------------------------------data variables [START]
+
+  /**
+   * 默认颜色
+   * @type {string}
+   */
+  private normalColor = '#ffffff';
+
+  /**
+   * 反转颜色
+   * @type {string}
+   */
+  private inverseColor = '#333333';
+
+  /**
+   * 默认背景颜色
+   * @type {string}
+   */
+  private normalBgColor = 'rgba(0,0,0,0.6)';
+
+  /**
+   * 反转背景颜色
+   * @type {string}
+   */
+  private inverseBgColor = '#ffffff';
+
+  // ------------------------------------------data variables [END]
+
+  // ------------------------------------------config variables [START]
+
   /**
    * 是否显示
    */
@@ -58,29 +88,9 @@ export class LoadingComponent implements OnInit, OnDestroy {
    */
   @Input() text: string;
 
-  /**
-   * 默认颜色
-   * @type {string}
-   */
-  normalColor = '#ffffff';
+  // ------------------------------------------config variables [END]
 
-  /**
-   * 反转颜色
-   * @type {string}
-   */
-  inverseColor = '#333333';
-
-  /**
-   * 默认背景颜色
-   * @type {string}
-   */
-  normalBgColor = 'rgba(0,0,0,0.6)';
-
-  /**
-   * 反转背景颜色
-   * @type {string}
-   */
-  inverseBgColor = '#ffffff';
+  // ------------------------------------------assist variables [START]
 
   /**
    * 用于订阅和反订阅事件
@@ -92,6 +102,8 @@ export class LoadingComponent implements OnInit, OnDestroy {
    * @type {boolean}
    */
   isAnimationEnd = true;
+
+  // ------------------------------------------assist variables [END]
 
   constructor(private util: UtilService) {
     this.subscribe();
@@ -127,7 +139,6 @@ export class LoadingComponent implements OnInit, OnDestroy {
   subscribe() {
     console.log(this.util.subject);
     this.subscription = this.util.subject.subscribe((d: EventData) => {
-      console.log(d);
       if (d.type === EventType.TYPE_LOADING) {
         this.show(d.data);
       } else if (d.type === EventType.TYPE_LOADING_HIDE) {
