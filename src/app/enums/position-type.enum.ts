@@ -1,3 +1,6 @@
+/**
+ * 位置类型
+ */
 export enum PositionType {
   /**
    * 左

@@ -6,7 +6,7 @@ $font-size:16px;
 $line-height:25px;
 $bg-normal:#333333;
 $bg-inverse:#ffffff;
-
+$close-color: #666666;
 
 .alert-container{
   @include full;
@@ -29,26 +29,52 @@ $bg-inverse:#ffffff;
     @include box-shadow(#000000,0.6,5px);
     min-width: 400px;
     min-height: 200px;
-    max-width: 500px;
+    max-width: 450px;
     max-height: 300px;
     flex-direction:column;
-    .title,.body,.foot{
+    .alert-header,.alert-body,.alert-footer{
       width: 100%;
     }
-    .title{
+    .alert-header{
+      //background-color: #eee;
+      position: relative;
       height: 40px;
-      background-color: #eee;
+      line-height: 40px;
+      padding: 0 40px 0 20px;
+      font-size: 14px;
+      border-bottom: 1px solid #eee;
+      color: #333;
+      @include singleLine;
+      .btn-close{
+        position: absolute;
+        right: 0px;
+        width: 40px;
+        //top: 10px;
+        margin: 0;
+        font-weight: normal;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        outline: none;
+        color: $close-color;
+        &:hover{
+          color: lighten($close-color,5%);
+        }
+        &:active{
+          color: lighten($close-color,15%);
+        }
+      }
     }
-    .body{
+    .alert-body{
       overflow: auto;
       flex:1;
       line-height:$line-height;
     }
-    .foot{
+    .alert-footer{
       border-top: 1px solid #eee;
       height: 56px;
-      line-height: 56px;
-      padding: 0 10px;
+      line-height: 55px;
+      padding: 0 15px;
       text-align: center;
       .btn{
         min-width: 80px;

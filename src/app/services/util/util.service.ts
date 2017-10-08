@@ -22,6 +22,22 @@ export class UtilService {
   ];
 
   /**
+   * 水平对齐类型
+   * @type {[string,string,string]}
+   */
+  horizontal = [
+    'left', 'center', 'right'
+  ];
+
+  /**
+   * 水平对齐类型
+   * @type {[string,string,string]}
+   */
+  vertical = [
+    'top', 'middle', 'bottom'
+  ];
+
+  /**
    * 倒计时占位符
    * @type {string}
    */
@@ -83,11 +99,45 @@ export class UtilService {
    * 显示弹出框
    * @param data
    */
-  alert(data: any | string) {
+  showAlert(data: any | string) {
     this.subject.next({
       type: EventType.TYPE_ALERT,
       data: data
     });
+  }
+
+  /**
+   * 显示alert弹出框
+   * @param data
+   */
+  alert(data: any | string) {
+    let d;
+    if (typeof data === 'string') {
+      d = {
+        text: data,
+      };
+    } else {
+      d = data;
+    }
+    d.showCancelButton = false;
+    this.showAlert(d);
+  }
+
+  /**
+   * 显示 confirm 弹出框
+   * @param data
+   */
+  confirm(data: any | string) {
+    let d;
+    if (typeof data === 'string') {
+      d = {
+        text: data,
+      };
+    } else {
+      d = data;
+    }
+    d.showCancelButton = true;
+    this.showAlert(d);
   }
 
 

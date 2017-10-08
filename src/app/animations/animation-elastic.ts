@@ -1,6 +1,7 @@
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
-export const AlertAnimation: any = [
+//弹性
+export const ElasticAnimation: any = [
   // 容器
   trigger('container', [
     state('show', style({})),
@@ -37,18 +38,44 @@ export const AlertAnimation: any = [
   trigger('content', [
     state('show', style({
       opacity: 1,
-      '-webkit-transform': 'translateY(0px) scale(1)',
-      transform: 'translateY(0px) scale(1)'
+      '-webkit-transform': 'scale(1)',
+      transform: 'scale(1)'
     })),
     state('hide',
       style({
         // opacity: 0,
-        '-webkit-transform': 'translateY(10px) scale(0)',
-        transform: 'translateY(10px) scale(0)',
+        '-webkit-transform': 'scale(0)',
+        transform: 'scale(0)',
       })
     ),
     transition('hide=>show', [
-      animate('0.1s 0.2s')
+      animate('0.3s 0.2s ease-in', keyframes([
+        style({
+          '-webkit-transform': 'scale(0)',
+          transform: 'scale(0)',
+          offset: 0
+        }),
+        style({
+          '-webkit-transform': 'scale(1.2)',
+          transform: 'scale(1.1)',
+          offset: 0.3
+        }),
+        style({
+          '-webkit-transform': 'scale(0.9)',
+          transform: 'scale(0.9)',
+          offset: 0.5
+        }),
+        style({
+          '-webkit-transform': 'scale(1.1)',
+          transform: 'scale(1.1)',
+          offset: 0.7
+        }),
+        style({
+          '-webkit-transform': 'scale(1)',
+          transform: 'scale(1)',
+          offset: 1.0
+        })
+      ]))
     ]),
     transition('show=>hide', [
       animate('0.2s ease-out', style({

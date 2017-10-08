@@ -4,19 +4,26 @@ alert-box:满屏 flex布局 pointer-events:none;
 alert-content:内容容器 可伸缩变化(默认250像素宽,60像素高) pointer-events:auto;
 alert-text:inline-block,用于显示文字
 -->
-<div class='alert-container' [ngClass]="{none:!isShow&&isAnimationEnd}" [@InOut]="animationState"
-     (@InOut.start)="animationStarted($event)"
-     (@InOut.done)="animationDone($event)">
-  <div class="alert-bg"></div>
+<div class='alert-container' [ngClass]="{none:!isShow&&isAnimationEnd}" [@container]="animationState"
+     (@container.start)="animationStarted($event)"
+     (@container.done)="animationDone($event)">
+  <div class="alert-bg" [@bg]="animationState"></div>
   <div class="alert-box flex" [ngClass]="getPositionClass()">
-    <div class="alert-content thin-scroll flex" [ngClass]="getMainTheme()" [ngStyle]="getContentStyle()">
-      <div class="title"></div>
-      <div class="body flex" [ngClass]="getContentClass()">
-        <div class="alert-text" [innerHTML]="getText()"></div>
-      </div>
-      <div class="foot">
-        <button class="btn btn-success">{{okText}}</button>
-        <button class="btn btn-danger" [ngClass]="{none:!showCancelButton}">{{cancelText}}</button>
+    <div [@content]="animationState">
+      <div class="alert-content flex" [ngClass]="getMainTheme()" [ngStyle]="getContentStyle()">
+        <div class="alert-header">
+          <span class="emphasize" [innerHTML]="title||defaultTitle"></span>
+          <button class="btn-close" (click)="hide()">
+            <i class="glyphicon glyphicon-remove"></i>
+          </button>
+        </div>
+        <div class="alert-body thin-scroll flex" [ngClass]="getContentClass()">
+          <div class="alert-text" [innerHTML]="getText()"></div>
+        </div>
+        <div class="alert-footer" [ngClass]="getButtonAlign()">
+          <button class="btn btn-sm btn-primary" (click)="okFn()" [innerHTML]="okText"></button>
+          <button class="btn btn-sm btn-default" [ngClass]="{none:!showCancelButton}" (click)="cancelFn()" [innerHTML]="cancelText"></button>
+        </div>
       </div>
     </div>
   </div>

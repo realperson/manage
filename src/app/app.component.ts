@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UtilService} from './services/util/util.service';
 import {PositionType} from "./enums/position-type.enum";
+import {HorizontalAlignType} from "./enums/horizontal-align-type.enum";
 // import {Observable} from "rxjs/Observable";
 // import "rxjs/add/observable/fromEvent";
 // import "rxjs/add/operator/scan";
@@ -53,13 +54,37 @@ export class AppComponent implements OnInit {
     //   });
     // }, 1000);
 
+    // let text=`正在加载中,<br/>请稍候<br/>请稍候<br/>请稍候<br/>请稍候<br/>请稍候`;
+    let text=`正在加载中正在加载中`;
+
     setTimeout(() => {
       this.util.alert({
-        text: `确定要删除吗?`,
+        text: text,
         ok: this.test.bind(this),
+        // showCancelButton:true,
+        buttonAlign: HorizontalAlignType.RIGHT,
         position: PositionType.MIDDLE | PositionType.CENTER
       });
     }, 0);
+
+    // setTimeout(() => {
+    //   this.util.alert({
+    //     text: text,
+    //     ok: this.test.bind(this),
+    //     // showCancelButton:true,
+    //     buttonAlign: HorizontalAlignType.RIGHT,
+    //     position: PositionType.MIDDLE | PositionType.CENTER
+    //   });
+    // }, 0);
+
+    setTimeout(() => {
+      this.util.alert({
+        text: text,
+        ok: this.test.bind(this),
+        showCancelButton:true,
+        position: PositionType.MIDDLE | PositionType.CENTER
+      });
+    }, 8000);
 
     // var button = document.querySelector('button');
     // Observable.fromEvent(button, 'click').subscribe((e) => console.log(e));

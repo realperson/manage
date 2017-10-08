@@ -5,6 +5,7 @@ import {EventType} from '../../enums/event-type.enum';
 import {EventData} from '../../interfaces/event-data';
 import {PositionType} from '../../enums/position-type.enum';
 import {AlertAnimation} from '../../animations/animation-alert';
+import {HorizontalAlignType} from "../../enums/horizontal-align-type.enum";
 
 @Component({
   selector: 'component-alert',
@@ -64,6 +65,18 @@ export class AlertComponent implements OnInit, OnDestroy {
    */
   private defaultCancelText = '取消';
 
+  /**
+   * 默认标题
+   * @type {string}
+   */
+  defaultTitle = '提示';
+
+  /**
+   * 默认底部按钮对齐方式
+   * @type {string}
+   */
+  private defaultButtonAlign = HorizontalAlignType.CENTER;
+
   // ------------------------------------------data variables [END]
 
 
@@ -105,6 +118,12 @@ export class AlertComponent implements OnInit, OnDestroy {
   @Input() text: string;
 
   /**
+   * 标题
+   */
+  @Input() title: string;
+
+
+  /**
    * ok按钮对应的文本
    */
   @Input() okText = this.defaultOkText;
@@ -128,6 +147,11 @@ export class AlertComponent implements OnInit, OnDestroy {
    * 是否显示cancel按钮
    */
   @Input() showCancelButton = false;
+
+  /**
+   * 底部按钮对齐方式
+   */
+  @Input() buttonAlign: number;
 
   // ------------------------------------------config variables [END]
 
@@ -325,6 +349,33 @@ export class AlertComponent implements OnInit, OnDestroy {
     return result;
   }
 
+  /**
+   * 获取底部按钮对齐方式
+   * @returns {string}
+   */
+  getButtonAlign() {
+    if (this.buttonAlign === undefined) {
+      this.buttonAlign = this.defaultButtonAlign;
+    }
+    const result = 'align-' + this.util.horizontal[this.buttonAlign];
+    return result;
+  }
+
+  /**
+   * 点击cancel按钮
+   */
+  cancelFn() {
+    this.hide();
+    this.cancel && this.cancel();
+  }
+
+  /**
+   * 点击ok按钮
+   */
+  okFn() {
+    this.hide();
+    this.ok && this.ok();
+  }
 
   /**
    * 隐藏
@@ -419,6 +470,19 @@ export class AlertComponent implements OnInit, OnDestroy {
       this.showCancelButton = data.showCancelButton;
     } else {
       this.showCancelButton = false;
+    }
+    // 设置标题
+    if (data && data.hasOwnProperty('title') && typeof data.title === 'string') {
+      this.title = data.title;
+    } else {
+      this.title = this.defaultTitle;
+    }
+    // 设置标题
+    if (data && data.hasOwnProperty('buttonAlign') && typeof data.buttonAlign === 'number'
+      && data.buttonAlign >= 0 && data.buttonAlign < this.util.horizontal.length) {
+      this.buttonAlign = data.buttonAlign;
+    } else {
+      this.buttonAlign = this.defaultButtonAlign;
     }
     this.isShow = true;
   }
