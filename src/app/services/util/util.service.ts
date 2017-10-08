@@ -7,10 +7,25 @@ import {EventData} from '../../interfaces/event-data';
 @Injectable()
 export class UtilService {
 
+  /**
+   * 用于向组件发送事件
+   * @type {Subject}
+   */
   subject: Subject<EventData> = new Subject();
-  position=[
-    'left','center','right','top','middle','bottom'
+
+  /**
+   * 位置列表
+   * @type {[string,string,string,string,string,string]}
+   */
+  position = [
+    'left', 'center', 'right', 'top', 'middle', 'bottom'
   ];
+
+  /**
+   * 倒计时占位符
+   * @type {string}
+   */
+  countDownPlaceholder = '[count-down]';
 
   /**
    * 隐藏加载动画
@@ -53,7 +68,6 @@ export class UtilService {
       data: data
     });
   }
-
 
 
   constructor() {

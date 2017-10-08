@@ -1,6 +1,6 @@
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
-export const loadingAnimation: any =
+export const loadingAnimation: any = [
   trigger('loading', [
     state('show',
       style({
@@ -23,4 +23,5 @@ export const loadingAnimation: any =
         opacity: 0
       }))
     ])
-  ]);
+  ])
+];

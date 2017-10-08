@@ -4,10 +4,11 @@ toast-box:满屏 flex布局 pointer-events:none;
 toast-content:内容容器 可伸缩变化(默认300像素宽,150像素高) pointer-events:auto;
 toast-text:inline-block,用于显示文字
 -->
-<div class='toast-container' [ngClass]="{none:(isShow=='false'||!isShow)&&isAnimationEnd}">
+<div class='toast-container' [ngClass]="{none:!isShow&&isAnimationEnd}" [@InOut]="animationState" (@InOut.start)="animationStarted($event)"
+     (@InOut.done)="animationDone($event)">
   <div class="toast-box flex" [ngClass]="getPositionClass()">
     <div class="toast-content thin-scroll flex" [ngClass]="getContentClass()" [ngStyle]="getContentStyle()">
-      <div class="toast-text" [innerHTML]="text">
+      <div class="toast-text" [innerHTML]="getText()">
       </div>
     </div>
   </div>

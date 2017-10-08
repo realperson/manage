@@ -9,14 +9,14 @@ import {loadingAnimation} from '../../animations/animation-loading';
   selector: 'component-loading',
   templateUrl: './loading.component.html',
   styleUrls: ['./loading.component.scss'],
-  animations: [loadingAnimation]
+  animations: loadingAnimation
 })
 export class LoadingComponent implements OnInit, OnDestroy {
 
   /**
    * 是否显示
    */
-  @Input() isShow: boolean | string;
+  @Input() isShow: boolean;
 
   /**
    * 加载动画名称(normal:大 small:小) 默认为大
@@ -129,7 +129,7 @@ export class LoadingComponent implements OnInit, OnDestroy {
     this.subscription = this.util.subject.subscribe((d: EventData) => {
       console.log(d);
       if (d.type === EventType.TYPE_LOADING) {
-        this.loading(d.data);
+        this.show(d.data);
       } else if (d.type === EventType.TYPE_LOADING_HIDE) {
         this.hide();
       }
@@ -145,9 +145,9 @@ export class LoadingComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // this.hide();
-    // this.loading('加载中,请稍候');
-    // this.loading();
-    // this.loading({
+    // this.show('加载中,请稍候');
+    // this.show();
+    // this.show({
     //   spinner: 'small', // 加载动画名称(其它:大 small:小) 默认为大
     //   text: '加载中,请稍候', // 文字
     //   theme: 'normal', // 主题(normal:黑色 inverse:白色) 默认为黑色
@@ -323,10 +323,10 @@ export class LoadingComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * 显示加载状态
+   * 显示
    * @param data 配置数据
    */
-  loading(data?: any | string) {
+  show(data?: any | string) {
     if (data) {
       if (typeof data === 'string') {
         this.text = data;
