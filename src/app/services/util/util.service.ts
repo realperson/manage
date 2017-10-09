@@ -3,9 +3,10 @@ import {Subject} from 'rxjs/Subject';
 import {EventType} from '../../enums/event-type.enum';
 import {EventData} from '../../interfaces/event-data';
 import {StorageService} from '../storage/storage.service';
-import {Http} from '@angular/http';
+import {Http, RequestOptionsArgs} from '@angular/http';
 import * as moment from 'moment';
 import 'rxjs/add/operator/toPromise';
+import {Observable} from "rxjs/Observable";
 
 
 @Injectable()
@@ -47,17 +48,17 @@ export class UtilService {
    */
   countDownPlaceholder = '[count-down]';
 
-  apiHost = 'https://dev.jintangjiang.cn/';// api前缀
+  apiHost = 'http://localhost:4735/api/'; // api前缀
 
-  defaultPage = 'HomePage';// 默认登录后跳转到的页面
-  refreshDuration = 280;// 下拉刷新的回复时间
+  defaultPage = 'HomePage'; // 默认登录后跳转到的页面
+  refreshDuration = 280; // 下拉刷新的回复时间
 
-  token: any = null;// 保存token
+  token: any = null; // 保存token
 
   preloadConfig = {
-    percent: 50,// 百分比
-    distance: 300// 距离
-  };// 在滚动到距离底部多远时进行预加载下一页
+    percent: 50, // 百分比
+    distance: 300 // 距离
+  }; // 在滚动到距离底部多远时进行预加载下一页
 
   // ------------------------------------------组件方法 [START]
 
@@ -259,7 +260,7 @@ export class UtilService {
         const response = res.json();
         if (200 <= res.status && res.status < 400) {
           // 登录成功,保存token和用户信息
-          this.saveToken(response);// 保存token
+          this.saveToken(response); // 保存token
           return true;
         } else {
           this.clear();
@@ -367,6 +368,33 @@ export class UtilService {
   }
 
   // ------------------------------------------登录相关 [END]
+
+  // ------------------------------------------网络请求 [START]
+
+  post(url: string, body: any, options?: RequestOptionsArgs) {
+    url = this.apiHost + url;
+    this.http.post(url, body, options).subscribe((r) => {
+      console.log(r);
+    });
+  }
+
+  // query(type, path, data, success_callBack, fail_callBack, config) {
+  //   this.http.post()
+  //   // var authentication=$.jStorage.get("authentication");
+  //   // if(authentication!=null){
+  //   //   path=Common.addUrlParameters(path,{token:authentication.token});
+  //   // }
+  //   //
+  //   // var setting = Common.apiSetting(type, path,data, success_callBack, fail_callBack);
+  //   // if(config){
+  //   //   for(var key in config){
+  //   //     setting[key] = config[key];
+  //   //   }
+  //   // }
+  //   // return $.ajax(setting);
+  // }
+
+  // ------------------------------------------网络请求 [END]
 
 
   constructor(private http: Http, public storage: StorageService) {

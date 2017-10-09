@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // this.util.loading();
-    setTimeout(() => {
+    /*setTimeout(() => {
       // this.util.loading();
       this.util.loading('加载中...');
     }, 1000);
@@ -84,7 +84,17 @@ export class AppComponent implements OnInit {
         showCancelButton:true,
         position: PositionType.MIDDLE | PositionType.CENTER
       });
-    }, 8000);
+    }, 8000);*/
+
+    // setTimeout(() => {
+    //   this.util.confirm({
+    //     text: 'skskss',
+    //     ok: this.test.bind(this),
+    //     // showCancelButton:true,
+    //     buttonAlign: HorizontalAlignType.RIGHT,
+    //     position: PositionType.MIDDLE | PositionType.CENTER
+    //   });
+    // }, 0);
 
     // var button = document.querySelector('button');
     // Observable.fromEvent(button, 'click').subscribe((e) => console.log(e));

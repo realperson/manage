@@ -218,8 +218,10 @@ export class ToastComponent implements OnInit, OnDestroy {
    */
   getText() {
     const timeTips = ` <span class="emphasize">${this.remainTime}</span> 秒后，`;
-    const result = this.text.replace(this.util.countDownPlaceholder, timeTips);
-    // let result = this.text;
+    let result = '';
+    if (this.text) {
+      result = this.text.replace(this.util.countDownPlaceholder, timeTips);
+    }
     return result;
   }
 

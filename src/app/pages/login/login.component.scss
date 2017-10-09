@@ -1,0 +1,30 @@
+@import "./../../../assets/scss/config";
+
+.login-wrap{
+  width: 380px;
+  height: 300px;
+  @include center;
+  background-color: #ffffff;
+  @include border-radius;
+  @include box-shadow;
+  .title{
+    background-color: #ccc;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    @include border-bottom;
+    //.text-shadow;
+  }
+  form{
+    padding: 40px 40px 0 40px;
+    .form-group {
+      margin-bottom: 0px;
+      //margin-bottom: 30px;
+    }
+    .input-group-addon{
+      color: #999999;
+    }
+  }
+}

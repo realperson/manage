@@ -1,0 +1,20 @@
+@import "bootstrap-theme";
+
+.form-group .form-control-feedback {
+  display: none;
+}
+.form-group .error-tip {
+  display: none;
+}
+.form-group .normal-tip {
+  display: block;
+}
+.form-group.has-error .form-control-feedback {
+  display: block;
+}
+.form-group.has-error .error-tip {
+  display: block;
+}
+.form-group.has-error .normal-tip {
+  display: none;
+}
